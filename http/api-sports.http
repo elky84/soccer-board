@@ -1,0 +1,22 @@
+# exmaple 
+# https://www.api-football.com/documentation-v3#tag/Leagues/operation/get-leagues
+
+### Fixtures
+
+{{host}}/fixtures?season=2022&league=39
+x-rapidapi-host: v3.football.api-sports.io
+x-rapidapi-key: {{api-key}}
+
+
+### Leagues
+
+{{host}}/leagues
+x-rapidapi-host: v3.football.api-sports.io
+x-rapidapi-key: {{api-key}}
+
+
+### Seasons
+
+{{host}}/leagues/seasons
+x-rapidapi-host: v3.football.api-sports.io
+x-rapidapi-key: {{api-key}}
