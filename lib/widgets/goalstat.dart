@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../models/soccer.dart';
+import '../models/fixture.dart';
 
 Widget goalStat(Fixture fixture, int homeGoal, int awayGoal) {
   var home = homeGoal;

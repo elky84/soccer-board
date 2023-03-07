@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart';
-import 'package:flutter_live_score_app/models/soccer.dart';
+import 'package:flutter_live_score_app/models/soccer_match.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SoccerApi {

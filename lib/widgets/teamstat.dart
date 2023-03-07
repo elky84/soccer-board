@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_live_score_app/models/soccer.dart';
+import 'package:flutter_live_score_app/models/soccer_match.dart';
 
 Widget matchTile(SoccerMatch match) {
   var homeGoal = match.goal.home;

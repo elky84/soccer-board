@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_live_score_app/widgets/goalstat.dart';
 import 'package:flutter_live_score_app/widgets/matchtile.dart';
 import 'package:flutter_live_score_app/widgets/teamstat.dart';
-import 'package:flutter_live_score_app/models/soccer.dart';
+import 'package:flutter_live_score_app/models/soccer_match.dart';
 
 Widget pageBody(List<SoccerMatch> allmatches) {
   return Column(
