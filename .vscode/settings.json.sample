@@ -1,0 +1,8 @@
+{
+    "rest-client.environmentVariables": {
+        "api-sports": {
+            "host": "https://v3.football.api-sports.io",
+            "api-key": "PLEASE INPUT YOUR RAPID API KEY (look at README.MD)"
+        }
+    }
+}
