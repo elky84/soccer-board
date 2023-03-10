@@ -3,20 +3,15 @@
 
 ### Fixtures
 
-{{host}}/fixtures?season=2022&league=39
+GET {{host}}/fixtures?season=2022&league=39
+Content-Type: application/json
 x-rapidapi-host: v3.football.api-sports.io
 x-rapidapi-key: {{api-key}}
 
 
 ### Leagues
 
-{{host}}/leagues
-x-rapidapi-host: v3.football.api-sports.io
-x-rapidapi-key: {{api-key}}
-
-
-### Seasons
-
-{{host}}/leagues/seasons
+GET {{host}}/leagues?type=league
+Content-Type: application/json
 x-rapidapi-host: v3.football.api-sports.io
 x-rapidapi-key: {{api-key}}

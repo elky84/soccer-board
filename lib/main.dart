@@ -30,29 +30,27 @@ class _SoccerAppState extends State<SoccerApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFAFAFA),
-      appBar: AppBar(
         backgroundColor: Color(0xFFFAFAFA),
-        elevation: 0.0,
-        title: Text(
-          "Soccer Board",
-          style: TextStyle(color: Colors.black, fontSize: 38),
+        appBar: AppBar(
+          backgroundColor: Color(0xFFFAFAFA),
+          elevation: 0.0,
+          title: Text(
+            "Soccer Board",
+            style: TextStyle(color: Colors.black, fontSize: 38),
+          ),
+          centerTitle: true,
         ),
-        centerTitle: true,
-      ),
-      body: FutureBuilder(
-        future: SoccerApi().getAllMatches(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            print((snapshot.data).length);
-            return pageBody(snapshot.data);
-          } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
-    );
+        body: FutureBuilder(
+          future: SoccerApi().getLeagues(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return SoccerAppBody(leagues: snapshot.data);
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ));
   }
 }
