@@ -22,7 +22,6 @@ class SoccerApi {
     if (res.statusCode == 200) {
       body = jsonDecode(res.body);
       List<dynamic> matchesList = body['response'];
-      print("Api service: $body");
       return matchesList
           .map((dynamic item) => SoccerMatch.fromJson(item))
           .toList();
@@ -39,7 +38,6 @@ class SoccerApi {
     if (res.statusCode == 200) {
       body = jsonDecode(res.body);
       List<dynamic> list = body['response'];
-      print("Api service: $body");
       return list.map((dynamic item) => Leagues.fromJson(item)).toList();
     } else {
       return <Leagues>[];
