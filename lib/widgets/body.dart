@@ -9,15 +9,15 @@ import '../services/soccer.dart';
 class SoccerAppBody extends StatefulWidget {
   final List<Leagues> leagues;
 
-  const SoccerAppBody({Key key, this.leagues}) : super(key: key);
+  const SoccerAppBody({Key? key, required this.leagues}) : super(key: key);
 
   @override
   _SoccerAppBodyState createState() => _SoccerAppBodyState();
 }
 
 class _SoccerAppBodyState extends State<SoccerAppBody> {
-  int season = null;
-  Leagues league = null;
+  int? season;
+  Leagues? leagues;
 
   List<int> seasons = [];
 
@@ -29,9 +29,9 @@ class _SoccerAppBodyState extends State<SoccerAppBody> {
   }
 
   void _show() async {
-    if (league == null) return;
+    if (leagues == null || season == null) return;
 
-    var matches = await SoccerApi().getAllMatches(league.id, season);
+    var matches = await SoccerApi().getAllMatches(leagues!.id, season!);
     setState(() {
       this.allmatches = matches;
     });
@@ -49,7 +49,7 @@ class _SoccerAppBodyState extends State<SoccerAppBody> {
               child: const Text('League',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold))),
           DropdownButton(
-              value: this.league,
+              value: this.leagues,
               items: leagues.map(
                 (value) {
                   return DropdownMenuItem(
@@ -72,8 +72,8 @@ class _SoccerAppBodyState extends State<SoccerAppBody> {
               onChanged: (value) {
                 setState(() {
                   if (value != null) {
-                    league = value;
-                    seasons = league.seasons.map((e) => e.year).toList();
+                    this.leagues = value;
+                    this.seasons = value.seasons.map((e) => e.year).toList();
                   }
                 });
               }),
@@ -97,7 +97,7 @@ class _SoccerAppBodyState extends State<SoccerAppBody> {
               onChanged: (value) {
                 setState(() {
                   if (value != null) {
-                    season = value;
+                    this.season = value;
                   }
                 });
               }),
@@ -162,10 +162,10 @@ class _SoccerAppBodyState extends State<SoccerAppBody> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.network(league.logo, width: 30),
+          Image.network(leagues?.logo ?? "", width: 30),
           SizedBox(width: 10),
           Text(
-            "${league.name} Matches",
+            "${leagues?.name ?? ""} Matches",
             style: TextStyle(
               color: Colors.white,
               fontSize: 24.0,
@@ -174,7 +174,7 @@ class _SoccerAppBodyState extends State<SoccerAppBody> {
         ]);
   }
 
-  Widget goalStat(Fixture fixture, int homeGoal, int awayGoal) {
+  Widget goalStat(Fixture fixture, int? homeGoal, int? awayGoal) {
     var home = homeGoal;
     var away = awayGoal;
     var elapsed = fixture.status.elapsedTime;

@@ -2,7 +2,7 @@ class Team {
   int id;
   String name;
   String logoUrl;
-  bool winner;
+  bool? winner;
 
   Team(this.id, this.name, this.logoUrl, this.winner);
 

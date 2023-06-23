@@ -1,5 +1,5 @@
 class Status {
-  int elapsedTime;
+  int? elapsedTime;
   String long;
   Status(this.elapsedTime, this.long);
 

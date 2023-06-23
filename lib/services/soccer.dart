@@ -14,13 +14,11 @@ class SoccerApi {
   }
 
   Future<List<SoccerMatch>> getAllMatches(int league, int season) async {
-    var url =
-        "https://v3.football.api-sports.io/fixtures?season=${season}&league=${league}";
-    Response res = await get(url, headers: headers);
-    var body;
-
+    var url = Uri.https("v3.football.api-sports.io", "fixtures",
+        {'season': season.toString(), 'league': league.toString()});
+    var res = await get(url, headers: headers);
     if (res.statusCode == 200) {
-      body = jsonDecode(res.body);
+      var body = jsonDecode(res.body);
       List<dynamic> matchesList = body['response'];
       return matchesList
           .map((dynamic item) => SoccerMatch.fromJson(item))
@@ -31,12 +29,12 @@ class SoccerApi {
   }
 
   Future<List<Leagues>> getLeagues() async {
-    var url = "https://v3.football.api-sports.io/leagues?type=league";
-    Response res = await get(url, headers: headers);
-    var body;
+    var url =
+        Uri.https("v3.football.api-sports.io", "leagues", {'type': 'league'});
+    var res = await get(url, headers: headers);
 
     if (res.statusCode == 200) {
-      body = jsonDecode(res.body);
+      var body = jsonDecode(res.body);
       List<dynamic> list = body['response'];
       return list.map((dynamic item) => Leagues.fromJson(item)).toList();
     } else {

@@ -44,7 +44,7 @@ class _SoccerAppState extends State<SoccerApp> {
           future: SoccerApi().getLeagues(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return SoccerAppBody(leagues: snapshot.data);
+              return SoccerAppBody(leagues: snapshot.data!);
             } else {
               return Center(
                 child: CircularProgressIndicator(),
